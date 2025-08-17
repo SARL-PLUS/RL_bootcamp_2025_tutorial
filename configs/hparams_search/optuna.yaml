@@ -1,0 +1,24 @@
+# @package _global_
+defaults:
+  - override /hydra/launcher: ray
+  - override /hydra/sweeper: optuna
+
+hydra:
+  mode: "MULTIRUN"
+  launcher:
+    ray:
+      remote:
+        num_cpus: 4
+      init:
+        local_mode: false
+
+  sweeper:
+    _target_: hydra_plugins.hydra_optuna_sweeper.optuna_sweeper.OptunaSweeper
+    n_trials: 20
+    n_jobs: 4
+    direction: minimize
+
+    sampler:
+      _target_: optuna.samplers.TPESampler
+      seed: ${seed}
+      n_startup_trials: 10

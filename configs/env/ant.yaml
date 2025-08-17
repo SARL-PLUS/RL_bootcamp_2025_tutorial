@@ -1,0 +1,20 @@
+defaults:
+  - default
+
+id: Ant
+version: v5
+
+train_env:
+  _target_: ${env.vec_env}
+  env_id: ${env.env_id}
+  n_envs: 4
+  vec_env_cls: ${env.vec_env_cls}
+  seed: ${seed}
+
+eval_env:
+  _target_: ${env.vec_env}
+  env_id: ${env.env_id}
+  n_envs: 5
+  vec_env_cls: ${env.vec_env_cls}
+  seed: ${seed}
+

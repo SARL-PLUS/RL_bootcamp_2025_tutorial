@@ -1,0 +1,14 @@
+
+env_id:
+  _target_: gymnasium.make
+  _partial_: true
+  id: ${env.id}-${env.version}
+  max_episode_steps: 1000
+
+
+vec_env: stable_baselines3.common.env_util.make_vec_env
+
+vec_env_cls: 
+  _target_: stable_baselines3.common.vec_env.DummyVecEnv
+  _partial_: true
+
