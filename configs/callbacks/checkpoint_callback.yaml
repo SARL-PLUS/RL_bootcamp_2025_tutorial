@@ -1,0 +1,10 @@
+defaults:
+  - _self_
+
+checkpoint_callback:
+  _target_: stable_baselines3.common.callbacks.CheckpointCallback
+  save_freq: 1000
+  save_path: ${checkpoint_path}/periodic
+  save_replay_buffer: false
+  save_vecnormalize: false
+

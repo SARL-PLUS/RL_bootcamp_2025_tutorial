@@ -1,0 +1,27 @@
+# @package _global_
+defaults:
+  - _self_
+  - env: ant
+  - agent: sb3_ppo
+  - learner: sb3_learner
+  - callbacks: null
+  - hparams_search: null
+  - experiment: null
+
+seed: 1234
+
+task_name: "train_default"
+log_dir: ./logs
+
+run_id: ${task_name}/${now:%Y-%m-%d_%H-%M-%S}
+
+hydra:
+  run:
+    dir: ${log_dir}/runs/${run_id}
+  sweep:
+    dir: ${log_dir}/multiruns/${run_id}
+    subdir: ${hydra.job.num}
+
+checkpoint_path: ${hydra:runtime.output_dir}/checkpoints
+tensorboard_path: ${hydra:runtime.output_dir}/tensorboard
+

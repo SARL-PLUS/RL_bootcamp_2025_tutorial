@@ -1,0 +1,16 @@
+_target_: stable_baselines3.PPO
+policy: MlpPolicy
+env: ${env.train_env}
+learning_rate: 3e-4
+n_steps: 1024
+batch_size: 256
+gamma: 0.98
+gae_lambda: 0.98
+ent_coef: 0.0
+clip_range: 0.2
+verbose: 1
+tensorboard_log: ${tensorboard_path}
+seed: ${seed}
+device: cpu
+
+

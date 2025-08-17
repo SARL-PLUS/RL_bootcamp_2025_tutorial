@@ -1,0 +1,6 @@
+_target_: src.wrappers.learner.sb3_learner
+total_timesteps: 2000000
+tb_log_name: ${run_id}
+log_interval: 1
+callback: null
+progress_bar: true
