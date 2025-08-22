@@ -1,6 +1,6 @@
 import hydra
 from omegaconf import DictConfig
-from src.utils.utils import seed_erverything
+from src.utils.utils import seed_everything
 from src.utils.instantiate import instantiate_callbacks
 
 import os
@@ -16,7 +16,7 @@ def main(cfg: DictConfig):
         hydra.utils.call(cfg.env.register)
     
     if "seed" in cfg:
-        seed_erverything(seed=cfg.seed)
+        seed_everything(seed=cfg.seed)
     
     agent = hydra.utils.instantiate(cfg.agent)
     callbacks = instantiate_callbacks(cfg.callbacks) if "callbacks" in cfg else None

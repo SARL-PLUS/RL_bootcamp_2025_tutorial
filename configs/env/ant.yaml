@@ -3,6 +3,7 @@ defaults:
 
 id: Ant
 version: v5
+kwargs: {}
 
 train_env:
   _target_: ${env.vec_env}

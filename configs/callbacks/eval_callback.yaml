@@ -5,10 +5,10 @@ eval_callback:
   _target_: stable_baselines3.common.callbacks.EvalCallback
   callback_on_new_best: null
   eval_env: ${env.eval_env}
-  best_model_save_path: ${checkpoint_path}/best_model
-  log_path: ${checkpoint_path}/logs
+  best_model_save_path: ${best_model_path}
+  log_path: ${trained_agents_path}/evaluations
   n_eval_episodes: 5
-  eval_freq: 10000
+  eval_freq: 1000
   deterministic: true
   render: false
   verbose: 1

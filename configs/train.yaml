@@ -4,13 +4,13 @@ defaults:
   - env: ant
   - agent: sb3_ppo
   - learner: sb3_learner
-  - callbacks: null
+  - callbacks: default
   - hparams_search: null
   - experiment: null
 
 seed: 1234
 
-task_name: "train_default"
+task_name: "train_with_ckpt_eval_render"
 log_dir: ./logs
 
 run_id: ${task_name}/${now:%Y-%m-%d_%H-%M-%S}
@@ -22,6 +22,17 @@ hydra:
     dir: ${log_dir}/multiruns/${run_id}
     subdir: ${hydra.job.num}
 
-checkpoint_path: ${hydra:runtime.output_dir}/checkpoints
+#checkpoint_path: ${hydra:runtime.output_dir}/checkpoints
 tensorboard_path: ${hydra:runtime.output_dir}/tensorboard
 
+trained_agents_dir: ${hydra:runtime.cwd}/trained_agents
+
+# default: single-run => no suffix; for sweeps, override this from CLI
+# e.g. python -m train ... job_num_suffix="/${hydra.job.num}"
+job_num_suffix: ""
+trained_agents_path: ${trained_agents_dir}/${run_id}${job_num_suffix}
+
+# use these everywhere you save models
+checkpoint_path: ${trained_agents_path}/checkpoints
+best_model_path: ${trained_agents_path}/best_model
+final_model_path: ${trained_agents_path}/final
