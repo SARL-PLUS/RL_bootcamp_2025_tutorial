@@ -1,4 +1,10 @@
 
+register:
+  _target_: gymnasium.envs.registration.register
+  id: ${env.id}-${env.version}
+  order_enforce: True
+
+
 env_id:
   _target_: gymnasium.make
   _partial_: true
