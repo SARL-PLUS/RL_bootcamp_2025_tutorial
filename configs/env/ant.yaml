@@ -8,7 +8,7 @@ kwargs: {}
 train_env:
   _target_: ${env.vec_env}
   env_id: ${env.env_id}
-  n_envs: 4
+  n_envs: 8
   vec_env_cls: ${env.vec_env_cls}
   seed: ${seed}
 

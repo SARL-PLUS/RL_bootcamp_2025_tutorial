@@ -8,6 +8,6 @@ video:
   env_kwargs: ${oc.select:env.kwargs, {}}
 #  eval_env: ${env.eval_env}
   video_folder: ${trained_agents_path}/videos
-  video_freq: 10000                     # record every N training steps
-  video_length: 1000                    # steps to include in each clip
+  video_freq: 40960                     # record every N training steps
+  video_length: 500                    # steps to include in each clip
   deterministic: true

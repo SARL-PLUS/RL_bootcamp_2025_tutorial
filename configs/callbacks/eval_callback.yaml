@@ -2,17 +2,27 @@ defaults:
   - _self_
 
 eval_callback:
-  _target_: stable_baselines3.common.callbacks.EvalCallback
-  callback_on_new_best: null
+#  _target_: stable_baselines3.common.callbacks.EvalCallback
+  _target_: src.callbacks.video.EvalSaveVideosCallback
+#  callback_on_new_best: null
   eval_env: ${env.eval_env}
+  n_eval_episodes: 5
+  eval_freq: 8192
+  deterministic: false
+  render: false
   best_model_save_path: ${best_model_path}
   log_path: ${trained_agents_path}/evaluations
-  n_eval_episodes: 5
-  eval_freq: 1000
-  deterministic: true
-  render: false
   verbose: 1
 
+  # video args
+  video_env_id: ${env.id}
+  video_env_kwargs: ${oc.select:env.kwargs, {}}
+  video_folder: ${trained_agents_path}/videos
+  n_videos: 1
+  video_length: 500
+  video_deterministic: true
+
+  record_after_timestep: 400_000
 
 
 

@@ -10,7 +10,7 @@ defaults:
 
 seed: 1234
 
-task_name: "train_with_ckpt_eval_render"
+task_name: "train_save_best"
 log_dir: ./logs
 
 run_id: ${task_name}/${now:%Y-%m-%d_%H-%M-%S}

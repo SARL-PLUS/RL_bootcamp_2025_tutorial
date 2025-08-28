@@ -3,9 +3,8 @@ defaults:
 
 checkpoint_callback:
   _target_: stable_baselines3.common.callbacks.CheckpointCallback
-  save_freq: 10000
+  save_freq: 81920
   save_path: ${checkpoint_path}
   name_prefix: ckpt
   save_replay_buffer: false
   save_vecnormalize: false
-
