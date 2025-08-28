@@ -1,9 +1,6 @@
 # @package _global_
 defaults:
-  - override /agent: sb3_ppo
-  - override /hparams_search: optuna
-  - override /callbacks:
-    - eval_callback
+ - override /hparams_search: optuna
 
 task_name: "hparams_search_PPO@ANT"
 
