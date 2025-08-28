@@ -18,5 +18,5 @@ eval_env:
   env_id: ${env.env_id}
   n_envs: 5
   vec_env_cls: ${env.vec_env_cls}
-  seed: ${seed + 100}
+  seed: ${seed}
 

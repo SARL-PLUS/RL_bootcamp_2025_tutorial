@@ -12,7 +12,7 @@ train_env:
   env_id: ${env.env_id}
   n_envs: 4
   env_kwargs:
-    injury: "little"
+    injury: little
     
   vec_env_cls: ${env.vec_env_cls}
   seed: ${seed}
@@ -21,6 +21,7 @@ eval_env:
   _target_: ${env.vec_env}
   env_id: ${env.env_id}
   n_envs: 5
+  env_kwargs: ${env.train_env.env_kwargs}
   vec_env_cls: ${env.vec_env_cls}
   seed: ${seed}
 

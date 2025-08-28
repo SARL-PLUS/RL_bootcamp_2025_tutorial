@@ -4,7 +4,7 @@ defaults:
   - env: ant
   - agent: sb3_ppo
   - learner: sb3_learner
-  - callbacks: null
+  - callbacks: default
   - hparams_search: null
   - experiment: null
 
