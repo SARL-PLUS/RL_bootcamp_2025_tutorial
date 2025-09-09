@@ -28,7 +28,7 @@ By completing this bootcamp, you will:
 
 ## 🛠 Prerequisites
 
-- **Python 3.12+** installed on your computer.
+- **Python 3.11+** installed on your computer.
 - Basic knowledge of Python programming (functions, loops, classes).
 - Curiosity about AI, learning, and experimentation!
 
@@ -53,7 +53,7 @@ Each lesson includes clear explanations, annotated code examples, readings, and 
 
 To begin:
 1. Clone or download this repository.
-2. Ensure you have [Python 3.12+](https://www.python.org/downloads/) installed.
+2. Ensure you have [Python 3.11+](https://www.python.org/downloads/) installed.
 3. Set up a virtual environment (recommended):
 
    ```bash
@@ -65,6 +65,12 @@ To begin:
    ```bash
    pip install -r requirements.txt
    ```
+
+   > **Note for macOS (Apple Silicon) users:** The `requirements.txt` file may contain CUDA-specific packages (e.g., `nvidia-cublas-cu12`) that will fail to install on macOS. If you see related errors, you may need to manually remove `nvidia-*` packages from `requirements.txt` and pre-install a compatible version of PyTorch:
+   > ```bash
+   > pip install torch torchvision torchaudio
+   > ```
+   > After that, run `pip install -r requirements.txt` again and ignore the errors on CUDA-specific packages.
 
 Check each lesson's notebook or script for additional setup instructions as you progress.
 
