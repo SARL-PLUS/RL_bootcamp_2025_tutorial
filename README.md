@@ -66,12 +66,6 @@ To begin:
    pip install -r requirements.txt
    ```
 
-   > **Note for macOS (Apple Silicon) users:** The `requirements.txt` file may contain CUDA-specific packages (e.g., `nvidia-cublas-cu12`) that will fail to install on macOS. If you see related errors, you may need to manually remove `nvidia-*` packages from `requirements.txt` and pre-install a compatible version of PyTorch:
-   > ```bash
-   > pip install torch torchvision torchaudio
-   > ```
-   > After that, run `pip install -r requirements.txt` again and ignore the errors on CUDA-specific packages.
-
 Check each lesson's notebook or script for additional setup instructions as you progress.
 
 ## 📚 Additional Resources
