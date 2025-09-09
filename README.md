@@ -60,13 +60,15 @@ To begin:
    python3 -m venv rl-bootcamp-env
    source rl-bootcamp-env/bin/activate  # On Windows: rl-bootcamp-env\Scripts\activate
    ```
-4. Install any required packages (see instructions or requirements in the course materials).
+4. Install the required packages using the `requirements.txt` file:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 Check each lesson's notebook or script for additional setup instructions as you progress.
 
----
-
-## 📚 Further Resources
+## 📚 Additional Resources
 
 - [Course Website](https://sarl-plus.github.io/RL-Bootcamp2025/) – Latest materials and info
 - [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com/) – A great RL resource
