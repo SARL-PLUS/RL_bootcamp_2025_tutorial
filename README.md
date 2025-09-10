@@ -53,7 +53,11 @@ Each lesson includes clear explanations, annotated code examples, readings, and 
 
 To begin:
 1. Clone or download this repository.
-2. Ensure you have [Python 3.11+](https://www.python.org/downloads/) installed.
+2. Install Python 3.11 (if you don't have it):
+   - Windows: Download the Python 3.11 installer from https://www.python.org/downloads/windows/, run it, check "Add python.exe to PATH", and complete setup. Verify with:
+     - PowerShell: `py -3.11 --version` (or `python --version` if `py` is unavailable)
+   - macOS: Use the official installer from https://www.python.org/downloads/macos/ or Homebrew: `brew install python@3.11`. Verify with `python3.11 --version`.
+   - Linux (Ubuntu/Debian): `sudo apt update && sudo apt install -y python3.11 python3.11-venv python3-pip`. Verify with `python3.11 --version`. For other distros, use your package manager (dnf, pacman) to install Python 3.11 along with venv/pip.
 3. Set up a virtual environment (recommended):
 
    ```bash
@@ -71,30 +75,6 @@ Check each lesson's notebook or script for additional setup instructions as you 
 ### Windows setup (PowerShell)
 
 If you are on Windows, you can set up everything from PowerShell:
-2. Start TensorBoard pointing at your logs folder:
-   - Single runs:
-     ```bash
-     tensorboard --logdir logs/runs
-     ```
-   - Multiruns/sweeps:
-     ```bash
-     tensorboard --logdir logs/multiruns
-     ```
-   - Or aggregate everything:
-     ```bash
-     tensorboard --logdir logs
-     ```
-3. Open http://localhost:6006 in your browser.
-
-Tips:
-- If running on a remote machine:
-  ```bash
-  tensorboard --logdir logs --port 6006 --bind_all
-  # From your local machine:
-  ssh -N -L 6006:localhost:6006 user@remote-host
-  ```
-- Use the Scalars tab for rewards, losses, learning rates, etc. Adjust Smoothing to reduce noise.
-- If you want a clean view, remove previous runs from logs/ before starting new experiments.
 
 ## 📚 Additional Resources
 
