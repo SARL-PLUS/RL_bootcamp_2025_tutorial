@@ -76,10 +76,13 @@ Check each lesson's notebook or script for additional setup instructions as you 
 
 If you are on Windows, you can set up everything from PowerShell:
 
-## 📚 Additional Resources
+1) Install Python 3.11:
+- Download the latest Python 3.11 installer for Windows from https://www.python.org/downloads/windows/
+- During installation, check "Add python.exe to PATH", then complete setup.
+- Verify in a new PowerShell window:
+  - `py -3.11 --version` (preferred), or `python --version` if the py launcher is not available.
 
-- [Course Website](https://sarl-plus.github.io/RL-Bootcamp2025/) – Latest materials and info
-- [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com/) – A great RL resource
+2) Create and activate a virtual environment:
 - [Gymnasium Documentation](https://gymnasium.farama.org/) – RL environment suite
 - [RL Course Slides/Notes](https://sarl-plus.github.io/RL-Bootcamp2025/slides.html)
 - [Python Official Docs](https://docs.python.org/3/)
