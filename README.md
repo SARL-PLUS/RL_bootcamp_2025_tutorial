@@ -68,6 +68,34 @@ To begin:
 
 Check each lesson's notebook or script for additional setup instructions as you progress.
 
+### Windows setup (PowerShell)
+
+If you are on Windows, you can set up everything from PowerShell:
+2. Start TensorBoard pointing at your logs folder:
+   - Single runs:
+     ```bash
+     tensorboard --logdir logs/runs
+     ```
+   - Multiruns/sweeps:
+     ```bash
+     tensorboard --logdir logs/multiruns
+     ```
+   - Or aggregate everything:
+     ```bash
+     tensorboard --logdir logs
+     ```
+3. Open http://localhost:6006 in your browser.
+
+Tips:
+- If running on a remote machine:
+  ```bash
+  tensorboard --logdir logs --port 6006 --bind_all
+  # From your local machine:
+  ssh -N -L 6006:localhost:6006 user@remote-host
+  ```
+- Use the Scalars tab for rewards, losses, learning rates, etc. Adjust Smoothing to reduce noise.
+- If you want a clean view, remove previous runs from logs/ before starting new experiments.
+
 ## 📚 Additional Resources
 
 - [Course Website](https://sarl-plus.github.io/RL-Bootcamp2025/) – Latest materials and info
