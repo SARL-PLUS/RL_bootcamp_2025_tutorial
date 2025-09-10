@@ -76,41 +76,31 @@ Check each lesson's notebook or script for additional setup instructions as you 
 
 If you are on Windows, you can set up everything from PowerShell:
 
-1) Install Python 3.11:
-- Download the latest Python 3.11 installer for Windows from https://www.python.org/downloads/windows/
-- During installation, check "Add python.exe to PATH", then complete setup.
-- Verify in a new PowerShell window:
-  - `py -3.11 --version` (preferred), or `python --version` if the py launcher is not available.
+1.  **Install Python 3.12**:
+    - Download the latest Python 3.12 installer from the [official website](https://www.python.org/downloads/windows/).
+    - When running the installer, **ensure you check the box for "Add python.exe to PATH"**.
+    - After installation, open a new PowerShell terminal and verify with `py --version`.
 
+2.  **Create and Activate Virtual Environment**:
+    ```powershell
+    # Create the virtual environment
+    py -m venv rl-bootcamp-env
 
-# 1) Create the venv with Python 3.11 (works for your setup)
-py -3.11 -m venv rl-bootcamp-env
+    # Activate it
+    .\rl-bootcamp-env\Scripts\Activate.ps1
+    ```
+    > **Note:** If you see an error about script execution being disabled, run this command once to allow scripts for your user, then try activating again:
+    > `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force`
 
-# 2) Activate the venv (PowerShell uses Activate.ps1, not 'source')
-.\rl-bootcamp-env\Scripts\Activate.ps1
+3.  **Install Dependencies**:
+    Once the environment is active (your prompt should start with `(rl-bootcamp-env)`), install the required packages.
+    ```powershell
+    # Upgrade pip (optional but recommended)
+    python -m pip install --upgrade pip
 
-# 3) Verify it’s using the venv’s Python
-python --version
-pip --version
-
-# 4) (Optional) Upgrade pip and install deps
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-
-2) Create and activate a virtual environment:
-- [Gymnasium Documentation](https://gymnasium.farama.org/) – RL environment suite
-- [RL Course Slides/Notes](https://sarl-plus.github.io/RL-Bootcamp2025/slides.html)
-- [Python Official Docs](https://docs.python.org/3/)
-
----
-
-
-## How to use the template
-The template uses **[Stable-Baselines3](https://github.com/DLR-RM/stable-baselines3)** along with **[Hydra](https://hydra.cc/)** for the configuration management. Hydra is a hierarchical confiugration tool and essentially takes care of the tiresome parts like maintaining your configuration and storing it along with the training results. Although the use of hydra might be a matter of taste, we believe it is important to demonstrate its benefits. Configuration management is a highly relevant task that deserves similar attention to that given to the algorithms themselves.
-
-All commands assume you are running from the repository root with the virtual 
-Hydra will automatically create output directories under `logs/runs` or `logs/multiruns` depending on whether the job launcher is started in a single or multirun mode. Results and checkpoints are stored by the callbacks defined but the configuration of each run is automatically storeed in the `.hydra` directory. 
-
+    # Install the project requirements
+    pip install -r requirements.txt
+    ```
 
 ### Single run mode
 To run the training code in default configuration defined in `train.yaml` just execute the following code with the virtual environment activated:
