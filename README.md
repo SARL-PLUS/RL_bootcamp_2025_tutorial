@@ -82,6 +82,21 @@ If you are on Windows, you can set up everything from PowerShell:
 - Verify in a new PowerShell window:
   - `py -3.11 --version` (preferred), or `python --version` if the py launcher is not available.
 
+
+# 1) Create the venv with Python 3.11 (works for your setup)
+py -3.11 -m venv rl-bootcamp-env
+
+# 2) Activate the venv (PowerShell uses Activate.ps1, not 'source')
+.\rl-bootcamp-env\Scripts\Activate.ps1
+
+# 3) Verify it’s using the venv’s Python
+python --version
+pip --version
+
+# 4) (Optional) Upgrade pip and install deps
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
 2) Create and activate a virtual environment:
 - [Gymnasium Documentation](https://gymnasium.farama.org/) – RL environment suite
 - [RL Course Slides/Notes](https://sarl-plus.github.io/RL-Bootcamp2025/slides.html)
