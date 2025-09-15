@@ -3,7 +3,7 @@ import numpy as np
 import torch
 
 
-def seed_erverything(seed: int) -> None:
+def seed_everything(seed: int) -> None:
     np.random.seed(seed)
     random.seed(seed)
     torch.manual_seed(seed)

@@ -10,8 +10,6 @@ import gymnasium as gym
 import os, tempfile, shutil
 from multiprocessing import get_context
 
-# from src.utils.env_util import make_vec_env  # your helper
-
 
 def _make_single_vec_env(
     env_id: Union[str, Callable[..., gym.Env]],
@@ -37,9 +35,7 @@ def _make_single_vec_env(
             # best-effort fallback
             env = env_id(**env_kwargs)
             if getattr(env, "render_mode", None) != "rgb_array":
-                # This sets the attribute so SB3's recorder check passes.
-                # Many Gymnasium envs also need it set at init; if your factory ignores it,
-                # prefer wiring a string ID instead so we can call gym.make(..., render_mode=...)
+                # This sets the attribute so SB3's recorder checks pass.
                 try:
                     env.render_mode = "rgb_array"
                 except Exception as e:

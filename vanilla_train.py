@@ -5,7 +5,7 @@ from stable_baselines3 import PPO
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.callbacks import EvalCallback
-from src.utils.utils import seed_erverything
+from src.utils.utils import seed_everything
 
 
 
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     tensorboard_path.mkdir(parents=True, exist_ok=False)
     
     # seed all random generators used for reproducability
-    seed_erverything(seed=1234)
+    seed_everything(seed=1234)
     
     
     # instantiate the training enviornments
