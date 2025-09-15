@@ -12,7 +12,7 @@ os.environ["HYDRA_FULL_ERROR"] = "1"
 def main(cfg: DictConfig):
     
     # register environment
-    if "register" in cfg.env:
+    if "register" in cfg.env and cfg.env.register is not None:
         hydra.utils.call(cfg.env.register)
     
     if "seed" in cfg:
