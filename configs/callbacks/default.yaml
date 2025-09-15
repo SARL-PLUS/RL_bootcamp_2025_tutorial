@@ -2,5 +2,6 @@ defaults:
   - _self_
   - eval_callback
   - checkpoint_callback
+#  - video
 
 
