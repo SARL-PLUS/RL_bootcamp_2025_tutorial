@@ -1,0 +1,13 @@
+defaults:
+  - _self_
+
+video:
+  _target_: src.callbacks.video.PeriodicVideoCallback
+  env_id: ${env.id}                 # assumes env.default builds this (e.g., "Ant-v5")
+#  env_kwargs: ${env.kwargs}
+  env_kwargs: ${oc.select:env.kwargs, {}}
+#  eval_env: ${env.eval_env}
+  video_folder: ${trained_agents_path}/videos
+  video_freq: 40960                     # record every N training steps
+  video_length: 500                    # steps to include in each clip
+  deterministic: true
