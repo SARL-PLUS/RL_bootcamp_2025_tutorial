@@ -1,5 +1,5 @@
-_target_: stable_baselines3.PPO
-policy: MlpPolicy
+_target_: src.agent.ppo.PPO
+policy: ${policy}
 env: ${env.train_env}
 learning_rate: 3e-4
 n_steps: 1024
