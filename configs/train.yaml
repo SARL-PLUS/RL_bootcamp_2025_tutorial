@@ -2,6 +2,7 @@
 defaults:
   - _self_
   - env: ant
+  - policy: default
   - agent: sb3_ppo
   - learner: sb3_learner
   - callbacks: default

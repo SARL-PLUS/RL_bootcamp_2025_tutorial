@@ -1,0 +1,17 @@
+_target_: stable_baselines3.common.policies.ActorCriticPolicy
+_partial_: true
+features_extractor_class: 
+  _target_: src.common.layers.feature_extractor.CustomFeaturesExtractor
+  _partial_: true
+  model: 
+    _target_: src.models.dense_net.DenseNet
+    _partial_: true
+    hidden: [128, 128]
+    activation:
+      _target_: torch.nn.ELU
+      _partial_: true
+  features_dim: 32
+share_features_extractor: true
+net_arch: []
+
+

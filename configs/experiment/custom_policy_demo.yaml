@@ -1,0 +1,7 @@
+# @package _global_
+defaults:
+  - override /policy: custom_model
+
+
+# define a proper task name making it easier to link results with configurations
+task_name: "train_${env.id}_custom_policy"

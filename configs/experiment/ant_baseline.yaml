@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - override /env: ant
+
+env:
+  train_env:
+    n_envs: 6                                 # increase number of training environments
+    env_kwargs:
+      contact_cost_weight: 0.0                # simplify the problem by zeroing the contact force reward contributor
+      include_cfrc_ext_in_observation: false  # we do not need the contact forces beeing present in the observation
+
+
+
+# define a proper task name making it easier to link results with configurations
+task_name: "train_${env.id}_forceless"

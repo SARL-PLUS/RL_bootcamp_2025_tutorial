@@ -1,0 +1,17 @@
+_target_: stable_baselines3.common.policies.ActorCriticPolicy
+_partial_: true
+features_extractor_class: 
+  _target_: stable_baselines3.common.torch_layers.FlattenExtractor
+  _partial_: true
+  model: 
+    _target_: src.models.gnn.AugmentedGraphEncoder
+    _partial_: true
+    global_encoder:
+      _target_: src.models.gnn.DenseNet
+      _partial_: true
+      hidden : [128]
+    graph_encoder:
+      _target_: src.models.gnn.NNConvEdgeEncoder
+      _partial_: true
+      hidden_channels: [24]
+  features_dim: 16
