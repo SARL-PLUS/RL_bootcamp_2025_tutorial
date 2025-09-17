@@ -10,11 +10,11 @@
     * [Reinforcement Learning (RL)](#reinforcement-learning-rl)
     * [Why Learning-Based Approaches?](#why-learning-based-approaches)
 * [Getting Started: The Tutorial Workflow](#getting-started-the-tutorial-workflow)
-    * [Installation & Setup](#installation--setup)
-    * [Step 1: Train a "Pro" Agent on `AntEnv`](#train-a-pro-agent-on-antenv)
-    * [Step 2: Test the Pro Agent on `CrippledAntEnv`](#test-the-pro-agent-on-crippledantenv)
-    * [Step 3: Retrain an Agent to Master the `CrippledAntEnv`](#retrain-an-agent-to-master-the-crippledantenv)
-    * [Step 4: Compare & Explore Further](#compare--explore-further)
+    * [0. Installation & Setup](#0-installation--setup)
+    * [1. Train a "Pro" Agent on `AntEnv`](#1-train-a-pro-agent-on-antenv)
+    * [2. Test the Pro Agent on `CrippledAntEnv`](#2-test-the-pro-agent-on-crippledantenv)
+    * [3. Retrain an Agent to Master the `CrippledAntEnv`](#3-retrain-an-agent-to-master-the-crippledantenv)
+    * [4. Compare & Explore Further](#4--compare--explore-further)
 * [Installation Guide](#installation-guide)
     * [Prerequisites](#prerequisites)
     * [Step 1: Clone the Repository](#step-1-clone-the-repository)
@@ -24,9 +24,10 @@
 
 ## From Standard Benchmarks to Robust Robotics: The Ant Locomotion Playground
 
- > [Your Name/Team Members Here]
+[//]: # ( > [Your Name/Team Members Here])
 
- > Contact: your.email@plus.ac.at
+[//]: # ()
+[//]: # ( > Contact: your.email@plus.ac.at)
 
 Welcome to the **RL Bootcamp Tutorial**! This tutorial guides you through fundamental reinforcement learning (RL) techniques using a classic robotics locomotion task. We will train an agent to walk, introduce a "domain shift" by changing the agent's body, observe the consequences, and then explore strategies for adaptation.
 
