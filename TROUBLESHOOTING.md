@@ -77,34 +77,49 @@ pip install "gymnasium[mujoco]"
 ---
 
 # 5. Rendering Issues on Ubuntu 24.04
-On Ubuntu 24.04, you might encounter an error when rendering, particularly with MuJoCo environments. This is often due to missing EGL (OpenGL) libraries. EGL is a graphics rendering API that's often required for headless rendering.
+On Ubuntu 24.04, you might encounter an error when rendering, particularly with MuJoCo environments. The provided error log shows an `AttributeError: 'NoneType' object has no attribute 'eglQueryString'`, which indicates that the EGL libraries are not being correctly loaded. EGL is a graphics rendering API often required for headless rendering.
 
-**To resolve this, install the necessary libraries and set the correct environment variables:**
-1. **Update your package list and install the required libraries**:
+The solution is to ensure the necessary system libraries are installed and the correct environment variables are set to enable EGL. You have two clean fixes, and you should choose one.
+
+**Use EGL Correctly:**
+1. **System Pacakges (Debian/Ubuntu)**:
+Install the required graphics libraries using `apt-get`.
 ```bash
 sudo apt-get update
 sudo apt-get install -y libegl1 libgl1-mesa-dev libopengl0 libosmesa6 mesa-utils
 ```
-2. **(For NVIDIA GPUs)**: You may also need to install the NVIDIA driver. For example, `nvidia-driver-535`. Ensure that the `libnvidia-egl` libraries are installed with the driver.
+If you have an NVIDIA GPU, you should also install the appropriate driver (e.g., `nvidia-driver-535`) and ensure the `libnvidia-egl*` libraries are present.
 
-3. **Install or re-install the Python packages**:
-```bash
-pip install stable-baselines3
-pip install "gymnasium[mujoco]"
-pip install "gymnasium[other]"
-pip install -r requirements_linux.txt
-```
 
-4. **Set the environment variables to use EGL**: Before running your script or notebook, set the `MUJOCO_GL` and `PYOPENGL_PLATFORM` environment variables. You can do this in your shell or directly within your Python script.
+2. **Environment Variables**:
+Set the environment variables before importing `gymnasium` or `mujoco` in your Python script. This tells MuJoCo and PyOpenGL to use EGL for rendering.
 ```python
 import os
 os.environ["MUJOCO_GL"] = "egl"
 os.environ["PYOPENGL_PLATFORM"] = "egl" # required by mujoco’s EGL wrapper
-
 ```
 
-5. **Sanity Check**: To confirm that the EGL libraries are correctly loaded, you can run this check in Python. It should not raise an error. This step is particularly useful for verifying the setup for your RL projects, especially those involving visual rendering.
+3. **Sanity Check**:
+To confirm the EGL libraries are correctly loaded, run this check in your Python environment.
 ```python
 from OpenGL import EGL
 assert EGL.eglGetDisplay is not None
 ```
+If this code runs without an AttributeError, your EGL setup is correct.
+
+[//]: # (3. **Install or re-install the Python packages**:)
+
+[//]: # (```bash)
+
+[//]: # (pip install stable-baselines3)
+
+[//]: # (pip install "gymnasium[mujoco]")
+
+[//]: # (pip install "gymnasium[other]")
+
+[//]: # (pip install -r requirements_linux.txt)
+[//]: # (```)
+
+[//]: # (4. **Set the environment variables to use EGL**: Before running your script or notebook, set the `MUJOCO_GL` and `PYOPENGL_PLATFORM` environment variables. You can do this in your shell or directly within your Python script.)
+
+
