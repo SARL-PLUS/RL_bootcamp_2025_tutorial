@@ -7,7 +7,6 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from src.utils.postprocessing import get_tensorboard_record, get_synced_traces, resolve_tags
 
 
-
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--run", type=str)
@@ -37,7 +36,7 @@ if __name__ == "__main__":
         n_eval_episodes=cfg.callbacks.eval_callback.n_eval_episodes,
         deterministic=True,
     )
-    
+    print(mean_rewards, std_rewards)
     # TODO: Evaluate agent (e.g. render it)
 
 

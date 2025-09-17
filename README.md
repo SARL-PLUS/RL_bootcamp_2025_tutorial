@@ -1,8 +1,3 @@
-
-THIS IS A DRAFT AND HAS INCOMPLETE DATA:
- - inference.py not created yet (main method with args is missing - isolated model rendering already working)
-
-
 <a id="top"></a>
 # Tutorial in Reinforcement Learning of the [RL-Bootcamp Salzburg 25](https://sarl-plus.github.io/RL-Bootcamp2025/program/program.html])
 
@@ -118,10 +113,10 @@ This is where data-driven, learning-based methods like RL shine. They can learn 
 # Getting Started: The Tutorial Workflow
 This tutorial is a hands-on guide to training, testing, and adapting a policy.
 
-### Installation & Setup
+### 0. Installation & Setup
 Before you start, make sure you have set up your Python environment correctly by following the [Installation Guide](#installation-guide) at the end of this document. This involves creating a virtual environment and installing the packages from requirements.txt.
 
-### Train a "Pro" Agent on `AntEnv`
+### 1. Train a "Pro" Agent on `AntEnv`
 Our first goal is to train a competent agent on the standard AntEnv.
 
  - **Command**:
@@ -132,19 +127,25 @@ python train.py
 
  - **What happens**: Hydra will use the default configuration (`config/env/ant.yaml`) to train a PPO agent. After training, the best policy will be saved to a file like `logs/runs/YYYY-MM-DD_HH-MM-SS/best_model.zip`.
 
-### Test the Pro Agent on `CrippledAntEnv`
+### 2. Test the Pro Agent on `CrippledAntEnv`
 Now, let's see how our pro agent handles an unexpected change.
 
- - **Command**:
+ - `AnalyseRun.ipynb`:
+   - In this Jupyter notebook, you can choose the trained agent's weights (e.g. `best_model.zip`) that you want to evaluate
+   - You can also choose on which environment type you want to evaluate (e.g. `Ant-v5` & `CrippledAnt-v5`)
+     - Note that the observation and action sizes, must match the trained policy input and output sizes, respectively (i.e. you cannot directly use an agent trained on an Ant with 4 legs, on some Ant with 6 legs)
 
-```bash
-# Replace the path with the actual path to your saved model
-python inference.py model_path=logs/runs/YYYY-MM-DD_HH-MM-SS/best_model.zip env=crippled_ant
-```
+[//]: # (```bash)
+
+[//]: # (# Replace the path with the actual path to your saved model)
+
+[//]: # (python inference.py model_path=logs/runs/YYYY-MM-DD_HH-MM-SS/best_model.zip env=crippled_ant)
+
+[//]: # (```)
 
  - **What happens**: We load our trained agent but use a Hydra override (`env=crippled_ant`) to run it in the modified environment. You will likely see the ant stumble and fail, proving its policy was not robust to this change.
 
-### Retrain an Agent to Master the `CrippledAntEnv`
+### 3. Retrain an Agent to Master the `CrippledAntEnv`
 Let's train a new agent from scratch that only ever experiences the crippled environment.
 
  - **Command**:
@@ -152,9 +153,9 @@ Let's train a new agent from scratch that only ever experiences the crippled env
 ```bash
 python train.py env=crippled_ant
 ```
- - **What happens**: This will create a new agent that learns a specialized gait for the crippled body. You can test it with `inference.py` and see that it learns to walk effectively under its new circumstances.
+ - **What happens**: This will create a new agent that learns a specialized gait for the crippled body. You can test it with `AnalyseRun.ipynb` and see that it learns to walk effectively under its new circumstances.
 
-###  **Compare & Explore Further**
+### 4-∞. **Compare & Explore Further**
 Now you have two specialist agents!
 
  - **Compare them**: Watch both agents in their respective environments. Do they learn different gaits?
@@ -346,7 +347,7 @@ python train.py -m experiment=hp_ant_baseline
     │   ├── models/             # Neural net definitons for feature extractors
     │   ├── utils/              # Helpers for instantiation and postprocessing
     │   └── wrappers/           # Code wrappers 
-    ├── inference.py            # Inference script evaluating policy snapshots
+    ├── AnalyseRun.ipynb        # Inference script evaluating policy snapshots
     ├── train.py                # Main training entry point
     ├── vanilla_train.py        # A simple scipt to train without hydra (aimed for visualization, not recommended to use)
     ├── requirements.txt        # Python dependencies

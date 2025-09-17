@@ -107,7 +107,6 @@ class CrippledAnt(AntEnv):
             "cfrc_ext": self.data.cfrc_ext[1:].size * include_cfrc_ext_in_observation,
         }
 
-
     def reset(self, *args, **kwargs):
         
         self._healthy_state = np.ones(4)
@@ -152,8 +151,7 @@ class CrippledAnt(AntEnv):
             self.render()
         # truncation=False as the time limit is handled by the `TimeLimit` wrapper added during `make`
         return observation, reward, terminated, False, info
-    
-    
+
     def _get_obs(self):
         position = self.data.qpos.flatten()
         velocity = self.data.qvel.flatten()
