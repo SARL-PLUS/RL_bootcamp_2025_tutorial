@@ -1,49 +1,14 @@
 from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, Optional, Union, Callable
-import inspect
 from stable_baselines3.common.callbacks import EvalCallback
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.vec_env import VecVideoRecorder, DummyVecEnv
-from stable_baselines3.common.vec_env.base_vec_env import VecEnv
 import gymnasium as gym
 import os, tempfile, shutil
 from multiprocessing import get_context
 
-
-def _make_single_vec_env(
-    env_id: Union[str, Callable[..., gym.Env]],
-    env_kwargs: Optional[Dict[str, Any]] = None,
-) -> VecEnv:
-    """Create a 1-env DummyVecEnv with rgb_array rendering for both string IDs and factories."""
-    env_kwargs = env_kwargs or {}
-
-    if isinstance(env_id, str):
-        def thunk():
-            return gym.make(env_id, render_mode="rgb_array", **env_kwargs)
-    else:
-        # env_id is a callable factory; pass render_mode if it accepts it
-        sig = None
-        try:
-            sig = inspect.signature(env_id)
-        except (ValueError, TypeError):
-            pass
-
-        def thunk():
-            if sig and "render_mode" in sig.parameters:
-                return env_id(render_mode="rgb_array", **env_kwargs)
-            # best-effort fallback
-            env = env_id(**env_kwargs)
-            if getattr(env, "render_mode", None) != "rgb_array":
-                # This sets the attribute so SB3's recorder checks pass.
-                try:
-                    env.render_mode = "rgb_array"
-                except Exception as e:
-                    print(e)
-                    pass
-            return env
-
-    return DummyVecEnv([thunk])
+from src.utils.env_utils import make_single_vec_env
 
 
 def _render_best_worker(model_cls, model_path, env_id, env_kwargs, video_folder, n_videos, video_length, deterministic, rm_on_complete=True):
@@ -125,7 +90,7 @@ class EvalSaveVideosCallback(EvalCallback):
 
         for i in range(self.n_videos):
             prefix = f"best_step_{self.num_timesteps:010d}_{i+1}"
-            eval_env = _make_single_vec_env(self.video_env_id, self.video_env_kwargs)
+            eval_env = make_single_vec_env(self.video_env_id, self.video_env_kwargs)
             rec_env = VecVideoRecorder(
                 eval_env,
                 video_folder=str(self.video_folder),
@@ -205,7 +170,7 @@ class PeriodicVideoCallback(BaseCallback):
     def _record_once(self) -> None:
         prefix = f"step_{self.num_timesteps:010d}"
 
-        eval_env = _make_single_vec_env(self.env_id, self.env_kwargs)
+        eval_env = make_single_vec_env(self.env_id, self.env_kwargs)
 
         # --- safety check before recording
         try:
