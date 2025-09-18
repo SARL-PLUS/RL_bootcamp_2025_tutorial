@@ -131,6 +131,14 @@ python train.py
 ### 2. Test the Pro Agent on `CrippledAntEnv`
 Now, let's see how our pro agent handles an unexpected change.
 
+ - `post_training_analysis.py`:
+   -  A script for post-training analysis, which includes rendering a video of the trained policu and plotting training metrics.
+   - You need to pass the `--run` parameter on the command line, followed by the parent directory of the trained agent to be analysed
+   - The following flags: `--render` & `--plot` should be passed to the script to enable the video rendering, and metrics plotting, respectively
+   - Example:
+ ```bash
+python post_training_analysis --run logs/runs/train_save_best/2025-08-22_18-55-24/ --plot --render
+```
  - `AnalyseRun.ipynb`:
    - In this Jupyter notebook, you can choose the trained agent's weights (e.g. `best_model.zip`) that you want to evaluate
    - You can also choose on which environment type you want to evaluate (e.g. `Ant-v5` & `CrippledAnt-v5`)
