@@ -1,5 +1,5 @@
 <a id="top"></a>
-# Tutorial in Reinforcement Learning of the [RL-Bootcamp Salzburg 25](https://sarl-plus.github.io/RL-Bootcamp2025/program/program.html])
+# Tutorial in Reinforcement Learning of the [RL-Bootcamp Salzburg 25](https://sarl-plus.github.io/RL-Bootcamp2025/program/program.html)
 
 * [Learning Goals](#learning-goals)
 * [Introduction: The Problem of Locomotion](#introduction-the-problem-of-locomotion)
@@ -128,9 +128,7 @@ python train.py
 
  - **What happens**: Hydra will use the default configuration (`config/env/ant.yaml`) to train a PPO agent. After training, the best policy will be saved to a file like `logs/runs/YYYY-MM-DD_HH-MM-SS/best_model.zip`.
 
-### 2. Test the Pro Agent on `CrippledAntEnv`
-Now, let's see how our pro agent handles an unexpected change.
-
+#### 1.1. Test the Pro Agent on `AntEnv`
  - `post_training_analysis.py`:
    -  A script for post-training analysis, which includes rendering a video of the trained policu and plotting training metrics.
    - You need to pass the `--run` parameter on the command line, followed by the parent directory of the trained agent to be analysed
@@ -139,18 +137,14 @@ Now, let's see how our pro agent handles an unexpected change.
  ```bash
 python post_training_analysis --run logs/runs/train_save_best/2025-08-22_18-55-24/ --plot --render
 ```
+
+
+### 2. Test the Pro Agent on `CrippledAntEnv`
+Now, let's see how our pro agent handles an unexpected change.
  - `AnalyseRun.ipynb`:
    - In this Jupyter notebook, you can choose the trained agent's weights (e.g. `best_model.zip`) that you want to evaluate
    - You can also choose on which environment type you want to evaluate (e.g. `Ant-v5` & `CrippledAnt-v5`)
      - Note that the observation and action sizes, must match the trained policy input and output sizes, respectively (i.e. you cannot directly use an agent trained on an Ant with 4 legs, on some Ant with 6 legs)
-
-[//]: # (```bash)
-
-[//]: # (# Replace the path with the actual path to your saved model)
-
-[//]: # (python inference.py model_path=logs/runs/YYYY-MM-DD_HH-MM-SS/best_model.zip env=crippled_ant)
-
-[//]: # (```)
 
  - **What happens**: We load our trained agent but use a Hydra override (`env=crippled_ant`) to run it in the modified environment. You will likely see the ant stumble and fail, proving its policy was not robust to this change.
 
