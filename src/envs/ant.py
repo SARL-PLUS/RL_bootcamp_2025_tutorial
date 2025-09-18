@@ -91,7 +91,7 @@ class CrippledAnt(AntEnv):
             "render_fps": int(np.round(1.0 / self.dt)),
         }
 
-        obs_size = self.data.qpos.size + self.data.qvel.size + len(self._healthy_state)
+        obs_size = self.data.qpos.size + self.data.qvel.size# + len(self._healthy_state)
         obs_size -= 2 * exclude_current_positions_from_observation
         obs_size += self.data.cfrc_ext[1:].size * include_cfrc_ext_in_observation
 
@@ -162,6 +162,8 @@ class CrippledAnt(AntEnv):
 
         if self._include_cfrc_ext_in_observation:
             contact_force = self.contact_forces[1:].flatten()
-            return np.concatenate((position, velocity, contact_force, health))
+            # return np.concatenate((position, velocity, contact_force, health))
+            return np.concatenate((position, velocity, contact_force))
         else:
-            return np.concatenate((position, velocity, health))
+            # return np.concatenate((position, velocity, health))
+            return np.concatenate((position, velocity))
