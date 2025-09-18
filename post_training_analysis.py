@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 from pathlib import Path
 import hydra
+import gymnasium as gym
 from omegaconf import OmegaConf
 from stable_baselines3.common.evaluation import evaluate_policy
 from src.utils.postprocessing import get_tensorboard_record, get_synced_traces, resolve_tags
@@ -9,18 +10,29 @@ from src.utils.utils import plot_multiple_axes
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument("--run", type=str)
+    parser.add_argument("--run", type=str, required=True)
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--plot", action="store_true")
+    parser.add_argument("--cripple", action="store_true")
+
     args = parser.parse_args()    
     
     run_path = Path().cwd().joinpath(args.run)
     cfg = OmegaConf.load(run_path.joinpath(".hydra", "config.yaml"))
 
+
+
     snapshot_path = run_path.joinpath("checkpoints", "best_model", "best_model.zip")
 
-    env = hydra.utils.instantiate(cfg.env.eval_env)
-    env_id = cfg.env.eval_env.env_id['id']
+    if args.cripple:
+        gym.register(id="CrippledAnt-v5", entry_point="src.envs.ant:CrippledAnt")
+        _temp_cfg = cfg.env.eval_env
+        _temp_cfg.env_id['id'] = env_id = "CrippledAnt-v5"
+        env = hydra.utils.instantiate(_temp_cfg)
+        # env_id = cfg.env.eval_env.env_id['id']
+    else:
+        env = hydra.utils.instantiate(cfg.env.eval_env)
+        env_id = cfg.env.eval_env.env_id['id']
 
     agent_class = hydra.utils.get_class(cfg.agent._target_)
     agent = agent_class.load(snapshot_path, device="cpu")
@@ -101,3 +113,4 @@ if __name__ == "__main__":
         }
         plot_multiple_axes(df_list, plot_dict)
     # pass
+
