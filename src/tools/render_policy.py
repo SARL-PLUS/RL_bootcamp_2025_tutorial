@@ -9,7 +9,7 @@ from gymnasium import Env
 from src.utils.env_utils import make_single_vec_env
 
 
-def render_policy_to_mp4(
+def render_policy_to_mp4_from_paths(
     model_class,
     model_path: Union[str, Path],
     env_id: Union[str, Callable[..., Env]],
@@ -34,6 +34,15 @@ def render_policy_to_mp4(
     )
 
     name = f"{Path(model_path).stem}"
+
+    render_policy_to_mp4(model, env, name, out_dir=out_dir, video_length=video_length, deterministic=deterministic)
+
+    # The exact filename is created by VecVideoRecorder; return the folder
+    _new_files =  set([str(item) for item in out_dir.glob('*.mp4')]) - _prev_files
+    return list(_new_files - _prev_files)
+
+
+def render_policy_to_mp4(agent, env, name, out_dir, video_length, deterministic=True):
     rec_env = VecVideoRecorder(
         env,
         video_folder=str(out_dir),
@@ -44,11 +53,8 @@ def render_policy_to_mp4(
 
     obs = rec_env.reset()
     for _ in range(video_length):
-        action, _ = model.predict(obs, deterministic=deterministic)
+        action, _ = agent.predict(obs, deterministic=deterministic)
         obs, _, _, _ = rec_env.step(action)
 
     rec_env.close()
     env.close()
-    # The exact filename is created by VecVideoRecorder; return the folder
-    _new_files =  set([str(item) for item in out_dir.glob('*.mp4')]) - _prev_files
-    return list(_new_files - _prev_files)
