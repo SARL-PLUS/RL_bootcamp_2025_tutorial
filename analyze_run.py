@@ -2,38 +2,25 @@ from argparse import ArgumentParser
 from pathlib import Path
 import hydra
 from omegaconf import OmegaConf
-
 from stable_baselines3.common.evaluation import evaluate_policy
-
 from src.utils.postprocessing import get_tensorboard_record, get_synced_traces, resolve_tags
 from src.tools.render_policy import render_policy_to_mp4, render_policy_to_mp4_from_paths
+from src.utils.utils import plot_multiple_axes
 
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--run", type=str)
     parser.add_argument("--render", action="store_true")
+    parser.add_argument("--plot", action="store_true")
     args = parser.parse_args()    
     
     run_path = Path().cwd().joinpath(args.run)
     cfg = OmegaConf.load(run_path.joinpath(".hydra", "config.yaml"))
-    
-    # analyze tensorboard record
-    tb_record = get_tensorboard_record(run_path)
-    rollout_tags = resolve_tags(obj=tb_record, prefix="rollout/")
-    rollout = get_synced_traces(ea=tb_record, tags=rollout_tags)
-    #
-    # TODO: Plot rollout data
-    
-    train_tags = resolve_tags(obj=tb_record, prefix="rollout/")
-    train = get_synced_traces(ea=tb_record, tags=train_tags)
-    
+
     snapshot_path = run_path.joinpath("checkpoints", "best_model", "best_model.zip")
 
     env = hydra.utils.instantiate(cfg.env.eval_env)
     env_id = cfg.env.eval_env.env_id['id']
-
-
-    # exit(3)
 
     agent_class = hydra.utils.get_class(cfg.agent._target_)
     agent = agent_class.load(snapshot_path, device="cpu")
@@ -72,4 +59,45 @@ if __name__ == "__main__":
             deterministic=deterministic
         )
 
+    if args.plot:
+        # analyze tensorboard record
+        tb_record = get_tensorboard_record(run_path)
+        rollout_tags = resolve_tags(obj=tb_record, prefix="rollout/")
+        rollout_data = get_synced_traces(ea=tb_record, tags=rollout_tags)
+
+        train_tags = resolve_tags(obj=tb_record, prefix="train/")
+        train_data = get_synced_traces(ea=tb_record, tags=train_tags)
+
+        eval_tags = resolve_tags(obj=tb_record, prefix="eval/")
+        eval_data = get_synced_traces(ea=tb_record, tags=eval_tags)
+
+        df_list = [rollout_data, train_data, eval_data]
+        for i, df in enumerate(df_list):
+            df_list[i] = df.set_index('steps')
+            # print(df.columns)
+            # break
+        #
+        plot_dict = {
+            0: {
+                'tags': ['rollout/ep_len_mean', 'eval/mean_ep_length'],
+                'ylabel': 'Episode length',
+            },
+            1: {
+                'tags': ['rollout/ep_rew_mean', 'eval/mean_reward'],
+                'ylabel': 'Episode reward',
+            },
+            2: {
+                'tags': ['train/loss', 'train/value_loss'],
+                'ylabel': 'Loss',
+            },
+            3: {
+                'tags': ['train/policy_gradient_loss', 'train/entropy_loss'],
+                'ylabel': 'Loss',
+            },
+            4: {
+                'tags': ['train/explained_variance', 'train/clip_fraction'],
+                'ylabel': 'Train metrics',
+            }
+        }
+        plot_multiple_axes(df_list, plot_dict)
     # pass
