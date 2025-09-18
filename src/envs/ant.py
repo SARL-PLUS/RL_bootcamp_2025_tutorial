@@ -122,7 +122,6 @@ class CrippledAnt(AntEnv):
         
         return super().reset(*args, **kwargs)
     
-    
     def step(self, action):
         xy_position_before = self.data.body(self._main_body).xpos[:2].copy()
         scales = np.zeros_like(action)

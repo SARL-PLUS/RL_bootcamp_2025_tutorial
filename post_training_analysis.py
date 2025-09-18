@@ -20,8 +20,6 @@ if __name__ == "__main__":
     run_path = Path().cwd().joinpath(args.run)
     cfg = OmegaConf.load(run_path.joinpath(".hydra", "config.yaml"))
 
-
-
     snapshot_path = run_path.joinpath("checkpoints", "best_model", "best_model.zip")
 
     if args.cripple:
@@ -68,7 +66,8 @@ if __name__ == "__main__":
             env_id=env_id,
             env_kwargs=env_kwargs,
             video_length=video_length,
-            deterministic=deterministic
+            deterministic=deterministic,
+            out_dir="videos" if not args.cripple else "videos-cripple"
         )
 
     if args.plot:
