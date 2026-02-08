@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="82e05d9d-d129-46f6-b1d8-cdf3085fae83" name="Changes" comment="Add RL Bootcamp lecture materials (Lecture 0 and Lecture 2)">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/hparams_search/optuna.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/configs/hparams_search/optuna.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="simon_debug" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MathPhysSim&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SARL-PLUS/RL_bootcamp_2025_tutorial&quot;,
+    &quot;accountId&quot;: &quot;eac5741e-2840-4a7d-9ff0-f23788fabfd4&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="32T2TDciekqn1d8Df10Rw4BvPfF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.train.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="pip install -r requirements.txt" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RL_bootcamp_2025_tutorial" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.train" />
+        <item itemvalue="Python.train" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
+        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="82e05d9d-d129-46f6-b1d8-cdf3085fae83" name="Changes" comment="" />
+      <created>1757430247998</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1757430247998</updated>
+      <workItem from="1757430249372" duration="1941000" />
+      <workItem from="1757432197412" duration="1201000" />
+      <workItem from="1757433419349" duration="9148000" />
+      <workItem from="1757603982941" duration="598000" />
+      <workItem from="1757664207425" duration="5882000" />
+      <workItem from="1757686542928" duration="68000" />
+      <workItem from="1758027071012" duration="5485000" />
+      <workItem from="1758631785799" duration="178000" />
+      <workItem from="1758633740008" duration="35000" />
+      <workItem from="1758872874174" duration="23000" />
+    </task>
+    <task id="LOCAL-00001" summary="Update requirements and clarify Python version in README">
+      <option name="closed" value="true" />
+      <created>1757431749846</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757431749846</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update requirements.txt to adjust platform conditions for CUDA packages and remove macOS-specific installation note from README">
+      <option name="closed" value="true" />
+      <created>1757431918205</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757431918205</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Windows setup instructions for TensorBoard in README">
+      <option name="closed" value="true" />
+      <created>1757497501623</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1757497501623</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Expand Python 3.11 installation instructions for Windows, macOS, and Linux in README">
+      <option name="closed" value="true" />
+      <created>1757497811774</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1757497811774</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add Python 3.11 installation and virtual environment setup instructions for Windows in README">
+      <option name="closed" value="true" />
+      <created>1757498090889</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1757498090889</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Update README with Python 3.12 installation and streamlined environment setup instructions for Windows">
+      <option name="closed" value="true" />
+      <created>1757504312149</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1757504312149</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add RL Bootcamp lecture materials (Lecture 0 and Lecture 2)">
+      <option name="closed" value="true" />
+      <created>1758631910768</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1758631910768</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update README to reflect Python 3.11+ requirement and add installation note for macOS users" />
+    <MESSAGE value="Update requirements and clarify Python version in README" />
+    <MESSAGE value="Update requirements.txt to adjust platform conditions for CUDA packages and remove macOS-specific installation note from README" />
+    <MESSAGE value="Add Windows setup instructions for TensorBoard in README" />
+    <MESSAGE value="Expand Python 3.11 installation instructions for Windows, macOS, and Linux in README" />
+    <MESSAGE value="Add Python 3.11 installation and virtual environment setup instructions for Windows in README" />
+    <MESSAGE value="Update README with Python 3.12 installation and streamlined environment setup instructions for Windows" />
+    <MESSAGE value="Add RL Bootcamp lecture materials (Lecture 0 and Lecture 2)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add RL Bootcamp lecture materials (Lecture 0 and Lecture 2)" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/RL_bootcamp_2025_tutorial$train.coverage" NAME="train Coverage Results" MODIFIED="1757666256279" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

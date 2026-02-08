@@ -335,6 +335,15 @@ Again to run the hyperparameter search we just need to run hydra in multrun mode
 python train.py -m experiment=hp_ant_baseline
 ```
 
+## 📚 Additional Resources
+
+- [Course Website](https://sarl-plus.github.io/RL-Bootcamp2025/) – Latest materials and info
+- [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com/) – A great RL resource
+- [Gymnasium Documentation](https://gymnasium.farama.org/) – RL environment suite
+- [RL Course Slides/Notes](https://sarl-plus.github.io/RL-Bootcamp2025/slides.html)
+- [Python Official Docs](https://docs.python.org/3/)
+
+---
 
 
 ### Repository Structure
